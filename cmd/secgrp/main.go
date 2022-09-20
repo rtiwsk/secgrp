@@ -83,6 +83,10 @@ func main() {
 }
 
 func run(op operation, instanceId, securityGroupId string) error {
+	if instanceId == "" {
+		return errors.New("The EC2 instance ID is required.")
+	}
+
 	cfg, err := config.LoadDefaultConfig(context.Background())
 	if err != nil {
 		return err
